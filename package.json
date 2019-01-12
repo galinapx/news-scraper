@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/syoeung/NewsScraping.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/syoeung/NewsScraping/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/syoeung/NewsScraping#readme",
+  "homepage": "",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",

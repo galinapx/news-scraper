@@ -15,6 +15,9 @@ const express = require('express'),
 const PORT = process.env.PORT || 8000;
 let app = express();
 
+//DB config
+const db = require('./config/database');
+
 app
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended:true }))
@@ -30,29 +33,39 @@ app
 // configure mongoose and start the server
 // =============================================================
 // set mongoose to leverage promises
-mongoose.Promise = Promise;
+//Map global promise - get rid of warning
+mongoose.Promise = global.Promise;
 
-const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/newsArticles";
+
+
+//const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/newsArticles";
+//const dbURI = process.env.MONGODB_URI || "mongodb://localhost:8000/newsArticles";
 
 // Database configuration with mongoose
 mongoose.set('useCreateIndex', true)
-mongoose.connect(dbURI, { useNewUrlParser: true });
+//Connect to mongoose
+mongoose.connect(db.mongoURI, {
+    useNewUrlParser: true
+})
+    .then(() => console.log('MongoDB connected...'))
+    .catch(err => console.log(err));
+    
 
-const db = mongoose.connection;
+//const db = mongoose.connection;
 
 // Show any mongoose errors
-db.on("error", function(error) {
-    console.log("Mongoose Error: ", error);
-});
+//db.on("error", function(error) {
+//    console.log("Mongoose Error: ", error);
+//});
 
 // Once logged in to the db through mongoose, log a success message
-db.once("open", function() {
-    console.log("Mongoose connection successful.");
+//db.once("open", function() {
+ //   console.log("Mongoose connection successful.");
     // start the server, listen on port 3000
-    app.listen(PORT, function() {
-        console.log("App running on port " + PORT);
-    });
-});
+//    app.listen(PORT, function() {
+//        console.log("App running on port " + PORT);
+ //   });
+//});
 
 module.exports = app;
     
