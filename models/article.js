@@ -24,7 +24,7 @@ const ArticleSchema = new Schema ({
         required: true,
         default: false
     },
-    //d elete article or not
+    //delete article or not
     deleted: {
         type: Boolean,
         required: true,
