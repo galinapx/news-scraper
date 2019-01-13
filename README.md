@@ -14,8 +14,7 @@
  
 
 * To view a live version of the site please visit https: 
-![webscraper]
 https://dry-forest-74260.herokuapp.com
 
-![faithlife]
+* To view a the original Faithlife blog please visit https: 
 https://blog.faithlife.com/
